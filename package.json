@@ -1,0 +1,26 @@
+{
+  "name": "mfem",
+  "version": "0.1.0",
+  "description": "Multi-Factor Extension Mobility for Cisco Unified Communications Manager",
+  "main": "app.js",
+  "repository": "https://github.com/sloan58/mfem",
+  "author": "Marty Sloan",
+  "license": "MIT",
+  "dependencies": {
+    "@duosecurity/duo_api": "^1.2.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "strong-soap": "^1.21.0",
+    "xmlbuilder": "^13.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "prod": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}
