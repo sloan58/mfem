@@ -48,16 +48,14 @@ module.exports.loginMenu = () => {
   return builder.create(menu).end({ pretty: true })
 }
 
-module.exports.emProfileMenu = (profiles, userid, jwt) => {
+module.exports.emProfileMenu = (profiles, userid) => {
   let emOptions = profiles.map(profile => {
     return {
       Name: {
         '#text': profile
       },
       URL: {
-        '#text': encodeURI(
-          `http://${process.env.IP}:${process.env.PORT}/em-select?jwt=${jwt}&profile=${profile}&userid=${userid}&device=#DEVICENAME#`
-        )
+        '#text': `http://${process.env.IP}:${process.env.PORT}/em-select?profile=${profile}&userid=${userid}&device=#DEVICENAME#`
       }
     }
   })
@@ -71,6 +69,31 @@ module.exports.emProfileMenu = (profiles, userid, jwt) => {
         '#text': 'Please select a profile'
       },
       MenuItem: emOptions
+    }
+  }
+  return builder.create(menu).end({ pretty: true })
+}
+
+module.exports.statusPage = (title, prompt) => {
+  const menu = {
+    CiscoIPPhoneText: {
+      Title: {
+        '#text': title
+      },
+      Prompt: {
+        '#text': prompt
+      },
+      SoftKeyItem: {
+        Name: {
+          '#text': 'Exit'
+        },
+        URL: {
+          '#text': 'Init:Services'
+        },
+        Position: {
+          '#text': '1'
+        }
+      }
     }
   }
   return builder.create(menu).end({ pretty: true })

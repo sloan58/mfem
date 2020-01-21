@@ -138,7 +138,6 @@ module.exports.loginDevice = (device, profile, userid) => {
             }
             return reject(message)
           }
-          console.log(result)
           resolve()
         }
       )
