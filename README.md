@@ -50,15 +50,15 @@ Once UCM Authentication has passed, a Duo push is sent to the user (based on `ma
 
 #### EM Login
 
-If the end user is only assigned to one EM profile then this is easy, MFEM uses AXL once again to perform an EM login request using one profile that is assigned to the end user. However, if the user has multiple profiles then MFEM will provide an XML service for them to select the desired profile to login - but this presents a security challenge.
+If the end user is only assigned to one EM profile then this is easy, MFEM uses AXL once again to perform an EM login request using the only profile that is assigned to the end user. However, if the user has multiple profiles then MFEM will provide an XML `CiscoIPPhoneMenu` response menu for them to select the desired profile to login - but this presents a security challenge.
 
 Once the end user has passed UCM authentication and they have approved the Duo push notification, we need to track them somehow and also protect the MFEM API so that rogue login requests cannot be sent by unauthorized users.
 
 To handle this challenge, the XML service response that provides a list of EM profiles is sent using an HTTP header that includes a signed JWT in order to track the response to ensure it's coming from an authenticated user.
 
-Once the reponse is received with the selected EM profile, AXL is used to log in the EM profile to the devcie.
+Once the reponse is received with the selected EM profile, AXL is used to login the EM profile to the devcie.
 
-Don't forget to enable Extension Mobility on the device profiles so that you can logout afterward!
+Tip: Don't forget to enable Extension Mobility on the device profiles so that you can logout afterward!
 
 ### Prerequisites
 
