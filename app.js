@@ -92,7 +92,7 @@ app.get('/em-select', (req, res) => {
 })
 
 app.listen(process.env.PORT, process.env.IP, () =>
-  console.log(`mfem listening on http://${process.env.IP}:${process.env.PORT}`)
+  console.log(`Point your UCM Phone Service to the MFEM entry point: http://${process.env.IP}:${process.env.PORT}`)
 )
 
 let loginEmProfile = async (res, device, profile, userid) => {
