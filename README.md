@@ -141,7 +141,7 @@ Once the selection is received with the desired EM profile, AXL is used to login
 
 ## Usage
 While this is a proof of concept, it is a functioning POC and could be used to provide an added layer of security to Cisco UCM
-EM login.  Fault tolerance would need to be implemented in case the primary MFEM API become unavailable.
+EM login.  Fault tolerance would need to be implemented in case the primary MFEM API becomes unavailable.
 ### Prerequisites
 
 - Cisco Unified Communication Manager with an account that has an AXL API role
