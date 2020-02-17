@@ -27,6 +27,11 @@ app.post('/login', (req, res) => {
   axl
     .authenticateUcm(userid, pin)
     .then(user => {
+
+      if(!user.phoneProfiles){
+        return res.send('You have no associated EM Profiles')
+      }
+
       duoClient.jsonApiCall(
         'POST',
         '/auth/v2/auth',
@@ -53,7 +58,7 @@ app.post('/login', (req, res) => {
           }
 
           let emProfileList = user.phoneProfiles.profileName.map(
-            profile => profile['$value']
+              profile => profile['$value']
           )
 
           const payload = { user: user.mailid }
@@ -111,7 +116,7 @@ let loginEmProfile = async (res, device, profile, userid) => {
       console.log(err)
       res.set('Content-Type', 'text/xml')
       return res.send(
-        phoneServiceXml.statusPage('Login Error', 'Please try again')
+        phoneServiceXml.statusPage('Login Error', err)
       )
     })
 }
